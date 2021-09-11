@@ -21,6 +21,10 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 // JSON parsing middleware
 app.use(express.json());
+
+// MongoDB connection
+require("./db-connection");
+
 //custom logger to show the url and req.body if one exists
 app.use((req, res, next) => {
   console.log(req.url);
