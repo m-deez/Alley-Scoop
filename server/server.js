@@ -22,6 +22,11 @@ app.use(express.static("public"));
 // JSON parsing middleware
 app.use(express.json());
 //custom logger to show the url and req.body if one exists
+
+// MongoDB connection
+require("./db-config");
+
+
 app.use((req, res, next) => {
   console.log(req.url);
   // is there an auth header
@@ -51,12 +56,15 @@ app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
+
+app.get("/helloworld", (req, res) => {
+  res.send("Hello World!");
+});
+
 /* ====  Server Listener / Connection ==== */
 // start express server on port 5000
 app.listen(PORT, () => {
   console.log("Successfully connected to Alley-Scoop!");
 });
 
-app.get("/helloworld", (req, res) => {
-  res.send("Hello World!");
-});
+
