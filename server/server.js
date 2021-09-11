@@ -1,4 +1,6 @@
-require("dotenv").config();
+//require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config({ path: __dirname + "/.env" });
 /* ==== External Modules ==== */
 const path = require("path");
 const express = require("express");
