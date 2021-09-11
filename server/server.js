@@ -3,6 +3,8 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
+const passport = require("passport");
+const users = require("./routes/api/users");
 
 /* ==== Internal Modules ==== */
 // const routes = require("./routes");
@@ -14,6 +16,13 @@ const app = express(); // create express app
 const PORT = process.env.PORT || 5000;
 
 /* ====  Middleware  ==== */
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./passport")(passport);
+// Routes
+app.use("/api/users", users);
+
 //Cors
 app.use(cors());
 // to serve static files and to serve the react build
