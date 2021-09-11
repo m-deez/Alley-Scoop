@@ -9,7 +9,7 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 
 /* ==== Internal Modules ==== */
-// const routes = require("./routes");
+//const routes = require("./routes/api/users");
 
 /* ==== Instanced Modules  ==== */
 const app = express(); // create express app
@@ -23,7 +23,7 @@ app.use(passport.initialize());
 // Passport config
 require("./passport")(passport);
 // Routes
-app.use("/api/users", users);
+app.use("/", users)
 
 //Cors
 app.use(cors());
@@ -68,8 +68,4 @@ app.use((req, res, next) => {
 // start express server on port 5000
 app.listen(PORT, () => {
   console.log("Successfully connected to Alley-Scoop!");
-});
-
-app.get("/helloworld", (req, res) => {
-  res.send("Hello World!");
 });
