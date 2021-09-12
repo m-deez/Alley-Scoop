@@ -2,14 +2,15 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: __dirname + "/.env" });
 /* ==== External Modules ==== */
-const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
+const path = require("path");
+
 const users = require("./routes/api/users");
 
 /* ==== Internal Modules ==== */
-//const routes = require("./routes/api/users");
+// const users = require("./routes/api/users");
 
 /* ==== Instanced Modules  ==== */
 const app = express(); // create express app
@@ -20,20 +21,20 @@ const PORT = process.env.PORT || 5000;
 /* ====  Middleware  ==== */
 // Passport middleware
 app.use(passport.initialize());
-// Passport config
-require("./passport")(passport);
 // Routes
-app.use("/", users)
+app.use("/api/users", users);
 
 //Cors
 app.use(cors());
 // to serve static files and to serve the react build
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
+
 // JSON parsing middleware
 app.use(express.json());
 //Mongoose Connection import
 require("./mongoose-connection");
+
 //custom logger to show the url and req.body if one exists
 app.use((req, res, next) => {
   console.log(req.url);
@@ -54,11 +55,11 @@ app.all("/api/*", function (req, res, next) {
   res.send("THIS IS NOT AN API ROUTE");
 });
 
-//IS THE REACT FULL STACK MAGIC MIDDLEWARE
-/*
-ANY REQUEST not covered by routes express makes -- will get piped to this middleware
-and this middleware's job is to handover control to react
-*/
+// //IS THE REACT FULL STACK MAGIC MIDDLEWARE
+// /*
+// ANY REQUEST not covered by routes express makes -- will get piped to this middleware
+// and this middleware's job is to handover control to react
+
 app.use((req, res, next) => {
   console.log(req.headers);
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
