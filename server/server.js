@@ -1,4 +1,6 @@
-require("dotenv").config();
+//require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config({ path: __dirname + "/.env" });
 /* ==== External Modules ==== */
 const path = require("path");
 const express = require("express");
@@ -9,6 +11,10 @@ const cors = require("cors");
 
 /* ==== Instanced Modules  ==== */
 const app = express(); // create express app
+
+// MongoDB connection
+require("./db-connection");
+app
 
 /* ====  Configuration  ==== */
 const PORT = process.env.PORT || 5000;
@@ -22,8 +28,7 @@ app.use(express.static("public"));
 // JSON parsing middleware
 app.use(express.json());
 
-// MongoDB connection
-require("./db-connection");
+
 
 //custom logger to show the url and req.body if one exists
 app.use((req, res, next) => {
