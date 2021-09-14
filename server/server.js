@@ -4,6 +4,7 @@ dotenv.config({ path: __dirname + "/.env" });
 /* ==== External Modules ==== */
 const path = require("path");
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
 const users = require("./routes/api/users");
@@ -13,17 +14,26 @@ const users = require("./routes/api/users");
 
 /* ==== Instanced Modules  ==== */
 const app = express(); // create express app
-
 /* ====  Configuration  ==== */
 const PORT = process.env.PORT || 5000;
+
 
 /* ====  Middleware  ==== */
 // Passport middleware
 app.use(passport.initialize());
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
+//Mongoose Connection import
+require("./mongoose-connection");
 // Passport config
 require("./passport")(passport);
 // Routes
-app.use("/", users)
+app.use("/api/users", users);
 
 //Cors
 app.use(cors());
@@ -32,8 +42,6 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 // JSON parsing middleware
 app.use(express.json());
-//Mongoose Connection import
-require("./mongoose-connection");
 //custom logger to show the url and req.body if one exists
 app.use((req, res, next) => {
   console.log(req.url);
