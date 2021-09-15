@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import "./styles.css";
+import Posts from "../Post/Post";
 
 class HomePage extends Component {
     onLogoutClick = e => {
@@ -12,14 +14,18 @@ class HomePage extends Component {
         const { user } = this.props.auth;
         return (
             <div className="homepage">
-                <div className="profile">
-                    <h4>
+                <div >
+                    <h4 className="profile">
                         <b>Hello, </b> {user.name.split(" ")[0]}
 
                     </h4>
-                    <button>Profile</button>
-                    <button onClick={this.onLogoutClick}>Logout</button>
+                    <div className="button">
+                         <button>Profile</button>
+                         <button onClick={this.onLogoutClick}>Logout</button>
+                    </div>
+                    
                 </div>
+                {/* <Posts /> */}
             </div>
 
         );

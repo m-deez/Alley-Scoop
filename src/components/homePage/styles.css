@@ -1,0 +1,15 @@
+
+.homepage {
+    display: flex;
+	justify-content: center;
+	padding: 10px;
+    border: 1px solid black;
+   /* justify-content: space-between; */
+  
+}
+/* .profile{
+     
+}
+button{
+
+} */
