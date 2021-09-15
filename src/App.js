@@ -14,8 +14,8 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";  
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
-
+// import Dashboard from "./components/dashboard/Dashboard";
+import HomePage from "./components/HomePage/HomePage";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -45,7 +45,7 @@ function App() {
     <Route exact path="/register" component={Register} />
     <Route exact path="/login" component={Login} />
     <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/homePage" component={HomePage} />
             </Switch>
     </div>
     </Router>

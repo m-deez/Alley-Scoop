@@ -44,7 +44,6 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // MongoDB connection
-require("./db-connection");
 
 //custom logger to show the url and req.body if one exists
 app.use((req, res, next) => {
