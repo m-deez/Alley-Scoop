@@ -5,14 +5,16 @@ export const NewsContext = createContext();
 
 export const NewsContextProvider = (props) => {
     const [data, setData] = useState()
-    const apiKey = "4a58b460765c477aabdc11d5ad2c4eac"
+    const apiKey = "48c0314982244889b524282371ce22c5"
+    //"4a58b460765c477aabdc11d5ad2c4eac" old key timed out
     
     useEffect(() =>{
-axios.get(
-`https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=${apiKey}`).then(response => setData(response.data)).catch(err => console.log(err)); 
-console.log(data);
-    },[data]);
-    
+        axios.get(
+            `https://newsapi.org/v2/top-headlines?country=us&category=sports&pageSize=20&apiKey=${apiKey}`).then(response => setData(response.data)).catch(err => console.log(err)); 
+            //console.log(data);
+},[]);
+
+
     return(
         <NewsContext.Provider value={{data}}>
         {props.children}

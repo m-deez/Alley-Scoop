@@ -14,3 +14,11 @@
 button{
 
 } */
+
+.news {
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+	padding: 10px;
+    border: 1px solid black;
+}
