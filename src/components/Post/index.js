@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import "./styles.css";
+import { func } from "prop-types";
 
 
 class Posts extends Component {

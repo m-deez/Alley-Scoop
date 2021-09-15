@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import "./styles.css";
-import Posts from "../Post/Post";
+import Posts from "../Post";
 
 class HomePage extends Component {
     onLogoutClick = e => {
