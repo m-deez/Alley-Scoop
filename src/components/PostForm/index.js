@@ -6,16 +6,16 @@ import * as PostService from "../../api/PostService";
 const PostForm = ({getPostsAgain}) => {
     const [article, setAriticle] = useState("");
     const [post, setPost] = useState("");
-    const [user, setUser] = useState("");
+    const [player, setPlayer] = useState("");
     
     const handleSubmit = async () => {
-        let newPost = { article, post, user };
+        let newPost = { article, post, player };
         const res = await PostService.create(newPost);
 
         if(res.status === 201) {
             setAriticle("");
             setPost("");
-            setUser("");
+            setPlayer("");
             getPostsAgain();
 
         } else {
@@ -40,11 +40,11 @@ const PostForm = ({getPostsAgain}) => {
                 placeholder="POST"
             />
             <input
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
+                onChange={(e) => setPlayer(e.target.value)}
+                value={player}
                 type="text"
-                name="user"
-                placeholder="USER"
+                name="player"
+                placeholder="PLAYER"
             />
             <button onClick={handleSubmit}>Post</button>
         </div>

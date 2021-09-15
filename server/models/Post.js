@@ -12,7 +12,7 @@ const postSchema = new Schema({
     },
     player: {
         type: String,
-        required: true
+        
     },
     user: [{type: Schema.Types.ObjectId, ref: 'users'}],
 }, {
