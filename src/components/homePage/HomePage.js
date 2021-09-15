@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import "./styles.css";
 import Posts from "../Post/Post";
+import {NewsContextProvider} from "../../utils/newsApi";
+import News from "../news-api/News";
+import axios from "axios";
 
 class HomePage extends Component {
     onLogoutClick = e => {
@@ -23,8 +26,12 @@ class HomePage extends Component {
                          <button>Profile</button>
                          <button onClick={this.onLogoutClick}>Logout</button>
                     </div>
-                    
                 </div>
+                    <div className="news">News Feed Below!
+                    <NewsContextProvider>
+                    <News />
+                    </NewsContextProvider>
+                    </div>
                 <Posts />
             </div>
 
