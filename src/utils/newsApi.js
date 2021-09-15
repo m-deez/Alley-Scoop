@@ -9,7 +9,7 @@ export const NewsContextProvider = (props) => {
     
     useEffect(() =>{
 axios.get(
-`https://newsapi.org/v2/everything?q=tesla&from=2021-08-14&sortBy=publishedAt&apiKey=${apiKey}`).then(response => setData(response.data)).catch(err => console.log(err));
+`https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=${apiKey}`).then(response => setData(response.data)).catch(err => console.log(err));
     },[data]);
     
     return(

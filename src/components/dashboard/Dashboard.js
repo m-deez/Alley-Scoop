@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import {NewsContextProvider} from "../../utils/newsApi";
-import {News} from "../news-api/News";
+import News from "../news-api/News";
+import axios from "axios";
 
 class Dashboard extends Component {
   onLogoutClick = e => {
