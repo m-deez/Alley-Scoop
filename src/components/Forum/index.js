@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PostForm from "../PostForm";
-import HomePage from "../homePage/HomePage";
+
 import * as PostService from "../../api/PostService";
 import Post from "../Post"
-const Home = () => {
+const Forum = () => {
     const [posts, setPosts] = useState([]);
 
     async function fetchPosts() {
@@ -20,7 +20,7 @@ const Home = () => {
     return(
         <div>
             <div>
-                <HomePage />
+              
                 <PostForm getPostsAgain={() => fetchPosts()} />
                 {posts.map((post) => {
                     // console.log("WHICH DATA AM I USING: ", post);
@@ -40,4 +40,4 @@ const Home = () => {
         </div>
     );
 };
-export default Home;
+export default Forum;

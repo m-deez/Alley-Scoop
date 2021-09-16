@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import "./styles.css";
-import Posts from "../Post/Post";
+
 import {NewsContextProvider} from "../../utils/newsApi";
 import News from "../news-api/News";
 import axios from "axios";
+import Forum from "../Forum";
 
 class HomePage extends Component {
     onLogoutClick = e => {
@@ -33,7 +34,10 @@ class HomePage extends Component {
                     <News />
                     </NewsContextProvider>
                     </div>
-                <Posts />
+                    <div>
+                        <Forum />
+                    </div>
+                
             </div>
 
         );
