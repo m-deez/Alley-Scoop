@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
+import Comment from "../Comment";
+import CommentForm from "../CommentForm";
 import { func, string, array } from "prop-types";
 import * as PostService from "../../api/PostService";
 
@@ -8,6 +10,7 @@ function Post({ id, getPostsAgain, article, post, player }) {
     const [editedArticle, setArticle] = useState(article);
     const [editedPost, setPost] = useState(post);
     const [editedPlayer, setPlayer] = useState(player);
+    const [comments, setComments] = useState([]);
 
     const handleEdit = async () => {
         console.log("handleedit");
@@ -28,6 +31,17 @@ function Post({ id, getPostsAgain, article, post, player }) {
         await PostService.remove(id);
         getPostsAgain();
     };
+
+    async function fetchComments(id) {
+        let res = await PostService.getAllComments(id);
+        if (res.status === 200) {
+            setComments(res.data.data);
+        }
+    }
+    useEffect(() => {
+        fetchComments(id);
+    }, []);
+
 
     return (
         <div className="posts">
@@ -73,6 +87,29 @@ function Post({ id, getPostsAgain, article, post, player }) {
                 /> 
                 )}
             </div>
+            <div>
+                <h3>Comments</h3>
+                {comments.map((comment) => {
+                  
+                    return (
+                        <Comment
+                            user={comment.user}
+                            body={comment.body}
+                            key={comment._id}
+                            commentId={comment._id}
+                            id={id}
+                            getCommentsAgain={(id) => fetchComments(id)}
+                        />
+                    );
+                })}
+            </div>
+            <div>
+            <CommentForm
+                id={id}
+                getPostsAgain={() => getPostsAgain()}
+                getCommentsAgain={(id) => fetchComments(id)}
+            />
+            </div>
 
 
         </div>
@@ -83,7 +120,7 @@ Post.propTypes = {
     article: string.isRequired,
     post: string.isRequired,
     player: string.isRequired,
-    // postComments: array,
+    postComments: array,
     getPostsAgain: func,
 };
 
