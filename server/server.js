@@ -8,10 +8,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
 const users = require("./routes/api/users");
-
+const posts = require("./routes/api/posts")
 /* ==== Internal Modules ==== */
 //const routes = require("./routes/api/users");
-
+// const routes = require("./routes/api")
 /* ==== Instanced Modules  ==== */
 const app = express(); // create express app
 /* ====  Configuration  ==== */
@@ -34,6 +34,7 @@ require("./mongoose-connection");
 require("./passport")(passport);
 // Routes
 app.use("/api/users", users);
+app.use("/api/posts", posts);
 
 //Cors
 app.use(cors());
