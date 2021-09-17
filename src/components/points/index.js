@@ -4,9 +4,11 @@ import "./style.css";
 const Points = () => {
   const [points, setPoints] = useState(0);
   const [fouls, setFouls] = useState(0);
+  const [disable, setDisable] = useState(false);
 
   useEffect(() => {}, [points]);
   useEffect(() => {}, [fouls]);
+  useEffect(() => {}, [disable]);
 
   return (
     <div>
@@ -15,7 +17,11 @@ const Points = () => {
           <p id="title">POINTS</p>
           <p id="score">{points}</p>
           <button
-            onClick={() => setPoints(points + Math.round(Math.random() + 2))}
+            disabled={disable}
+            onClick={() => {
+              setPoints(points + Math.round(Math.random() + 2));
+              setDisable(true);
+            }}
           >
             SCORE!
           </button>
@@ -23,7 +29,15 @@ const Points = () => {
         <div id="container">
           <p id="title">FOULS</p>
           <p id="score">{fouls}</p>
-          <button onClick={() => setFouls(fouls + 1)}>FOUL!</button>
+          <button
+            disabled={disable}
+            onClick={() => {
+              setFouls(fouls + 1);
+              setDisable(true);
+            }}
+          >
+            FOUL!
+          </button>
         </div>
       </div>
     </div>
