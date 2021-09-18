@@ -45,6 +45,16 @@ app.use(express.static("public"));
 // JSON parsing middleware
 app.use(express.json());
 
+//Allow origin access origin and methods 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+  next();
+});
+
+
 // MongoDB connection
 
 //custom logger to show the url and req.body if one exists
