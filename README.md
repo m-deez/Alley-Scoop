@@ -2,7 +2,12 @@ Introduction:
 
 Welcome to Alley Scoop!
 
-App creates a community of people to view and comment on their favorite Sports news of the day. We have created Like/dislike buttons for posts; like a scoreboard, points are in basketball (1,2,3). Continuous flow and scroll for the users’ posts. Enjoy!
+App creates a community of people to view and comment on their favorite Sports news of the day. We have created Like/dislike buttons for posts; like a scoreboard, points are in basketball (1,2,3). Continuous flow and scroll for the users’ posts. 
+
+To use the app, navigate to the deployed website and register a unique user profile. You will automatically be redirected to the homepage where you can view the news feed and forum side by side. Users may log out at anytime and your information is stored for up to 24 hours before you need to log in again. 
+
+
+Enjoy!
 
 ![highlight of app](./public/scoreboard.png)
 
@@ -11,8 +16,6 @@ App creates a community of people to view and comment on their favorite Sports n
 ![ux1](./public/survey1.png)
 
 ![ux2](./public/survey2.png)
-
-
 
 
 Technologies Used:
@@ -58,3 +61,5 @@ Matt D.
 Matt S.
 Yogesh N.
 mehari A.
+
+License MIT 
