@@ -6,6 +6,9 @@ App creates a community of people to view and comment on their favorite Sports n
 
 ![highlight of app](./public/scoreboard.png)
 
+![wireframe](./public/wire.jpeg)
+
+
 
 Technologies Used:
 
