@@ -92,7 +92,7 @@ function Post({ user, id, getPostsAgain, article, post, player }) {
                     />
                 )}
             </div>
-            <div className="buttom-post">
+            <div className="bottom-post">
                 {!isEditing && <p>{player}</p>}
                 {isEditing && (
                     <input
