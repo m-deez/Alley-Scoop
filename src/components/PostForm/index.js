@@ -34,7 +34,7 @@ const PostForm = ({getPostsAgain, user}) => {
                 value={article}
                 type="text"
                 name="article"
-                placeholder="ARTICLE"
+                placeholder="TITLE"
             />
             <input
                 onChange={(e) => setPost(e.target.value)}
@@ -48,7 +48,7 @@ const PostForm = ({getPostsAgain, user}) => {
                 value={player}
                 type="text"
                 name="player"
-                placeholder="PLAYER"
+                placeholder="SIGNATURE"
             />
             <button onClick={handleSubmit}>Post</button>
         </div>

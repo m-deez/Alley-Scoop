@@ -37,11 +37,11 @@ const Comment = ({ id, user, body, getCommentsAgain, commentId }) => {
             value={editedUser}
             type ="text"
             name="user"
-            placeholder="User"
+            placeholder="SIGNATURE"
             />
         )}
                      :
-                    {!isEditing && <span> {body}</span>}
+                    {!isEditing && <span>{body}</span>}
                     {isEditing && (
                         <input
                             onChange={(e) => setBody(e.target.value)}
