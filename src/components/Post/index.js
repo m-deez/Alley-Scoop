@@ -63,7 +63,7 @@ function Post({ user, id, getPostsAgain, article, post, player }) {
             </div>
 
             <div className="top-posts">
-                {!isEditing && <h1>{article}</h1>}
+                {!isEditing && <h4>{article}</h4>}
                 {isEditing && (
                     <input
                         onChange={(e) => setArticle(e.target.value)}
