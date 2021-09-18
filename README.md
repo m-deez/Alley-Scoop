@@ -35,7 +35,23 @@ https://trello.com/b/RtzoYsUc/project-planning
 
 Unsolved Problems: List any unsolved issues.
 
+Points are not included in the user object so they do not save on reload 
+
+News API does not work with deployment unless we purchase a subscriptions (cors limitation)
+
+Linking user name to each comment and post
+
+preventing users from editing other users posts (unfettered CRUD)
+
+
 Future Enhancements: Identify future features and enhancements planned for the project.
+
+More thoughtful UI/UX
+Add dual scrolling
+Connect articles to commments/posts though search feature 
+Friends list for users
+Sound/video clips
+
 
 Authors:
 Matt D.
