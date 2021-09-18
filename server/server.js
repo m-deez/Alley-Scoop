@@ -54,9 +54,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
-// MongoDB connection
-
 //custom logger to show the url and req.body if one exists
 app.use((req, res, next) => {
   console.log(req.url);
