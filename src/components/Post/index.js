@@ -6,12 +6,10 @@ import Comment from "../Comment";
 import CommentForm from "../CommentForm";
 import { func, string, array } from "prop-types";
 import * as PostService from "../../api/PostService";
-import { render } from "@testing-library/react";
+import Points from "../points";
 
-       
 
-function Post( { user, id, getPostsAgain, article, post, player,
-  }) {
+function Post({ user, id, getPostsAgain, article, post, player }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedArticle, setArticle] = useState(article);
     // const [editedUser, setUser] = useState(user.name);
@@ -34,7 +32,7 @@ function Post( { user, id, getPostsAgain, article, post, player,
             getPostsAgain();
         }
     };
- 
+
 
 
     const handleDelete = async () => {
@@ -51,18 +49,18 @@ function Post( { user, id, getPostsAgain, article, post, player,
     useEffect(() => {
         fetchComments(id);
     }, []);
-    
+
     // const user = props.user
     // console.log(user);
-  
-    
-      return (
+
+
+    return (
         <div className="posts">
             <div>
                 <p><b>Post,</b> {user.name}</p>
-              
+
             </div>
-          
+
             <div className="top-posts">
                 {!isEditing && <h1>{article}</h1>}
                 {isEditing && (
@@ -84,12 +82,12 @@ function Post( { user, id, getPostsAgain, article, post, player,
             <div className="middle-post">
                 {!isEditing && <p>{post}</p>}
                 {isEditing && (
-                    <input 
-                    onchange={(e) => setPost(e.target.value)}
-                    value={editedPost}
-                    type="text"
-                    name="post"
-                    placeholder="POST"
+                    <input
+                        onchange={(e) => setPost(e.target.value)}
+                        value={editedPost}
+                        type="text"
+                        name="post"
+                        placeholder="POST"
                     />
                 )}
             </div>
@@ -97,18 +95,18 @@ function Post( { user, id, getPostsAgain, article, post, player,
                 {!isEditing && <p>{player}</p>}
                 {isEditing && (
                     <input
-                    onChange={(e) => setPlayer(e.target.value)}
-                    value={editedPlayer}
-                    type="text"
-                    name="player"
-                    placeholder="PLAYER"
-                /> 
+                        onChange={(e) => setPlayer(e.target.value)}
+                        value={editedPlayer}
+                        type="text"
+                        name="player"
+                        placeholder="PLAYER"
+                    />
                 )}
             </div>
             <div>
                 <h3>Comments</h3>
                 {comments.map((comment) => {
-                  
+
                     return (
                         <Comment
                             user={comment.user}
@@ -122,19 +120,27 @@ function Post( { user, id, getPostsAgain, article, post, player,
                 })}
             </div>
             <div>
-            <CommentForm
-                id={id}
-                getPostsAgain={() => getPostsAgain()}
-                getCommentsAgain={(id) => fetchComments(id)}
-            />
-            </div> 
-           
-
-
+                <CommentForm
+                    id={id}
+                    getPostsAgain={() => getPostsAgain()}
+                    getCommentsAgain={(id) => fetchComments(id)}
+                />
+            </div>
+            <div className="points">
+                <Points />
+            </div>
         </div>
-        );
-   
+    );
 }
+
+
+
+
+
+
+
+
+
 Post.propTypes = {
     id: string.isRequired,
     article: string.isRequired,
@@ -143,6 +149,7 @@ Post.propTypes = {
     postComments: array,
     getPostsAgain: func,
     auth: PropTypes.object.isRequired
-};
+
+}
 
 export default Post;

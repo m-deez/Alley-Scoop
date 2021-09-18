@@ -35,6 +35,7 @@ require("./passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use("/api/posts", posts);
+app.use('/api/users/login', users);
 
 //Cors
 app.use(cors());
