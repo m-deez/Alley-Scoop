@@ -24,10 +24,10 @@ class HomePage extends Component {
                         <b>Hello, </b> {user.name.split(" ")[0]}
 
                     </h4>
-                    <div className="button">
+                    {/* <div className="button">
                          <button>Profile</button>
                          <button onClick={this.onLogoutClick}>Logout</button>
-                    </div>
+                    </div> */}
                 </div>
              <div className="dualPage">
                     <div className="news">News Feed Below!
