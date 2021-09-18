@@ -55,7 +55,7 @@ function Post({ id, getPostsAgain, article, post, player }) {
           {!isEditing && <p>{post}</p>}
           {isEditing && (
             <input
-              onchange={(e) => setPost(e.target.value)}
+              onChange={(e) => setPost(e.target.value)}
               value={editedPost}
               type="text"
               name="post"
@@ -63,7 +63,7 @@ function Post({ id, getPostsAgain, article, post, player }) {
             />
           )}
         </div>
-        <div className="buttom-post">
+        <div className="bottom-post">
           {!isEditing && <p>{player}</p>}
           {isEditing && (
             <input
