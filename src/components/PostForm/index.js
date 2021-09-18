@@ -5,7 +5,7 @@ import { func,  } from "prop-types";
 import * as PostService from "../../api/PostService";
 
 const PostForm = ({getPostsAgain, user}) => {
-    const [article, setAriticle] = useState("");
+    const [article, setArticle] = useState("");
     const [post, setPost] = useState("");
     const [player, setPlayer] = useState("");
     // const [user, setUser] = useState({});
