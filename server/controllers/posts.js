@@ -1,14 +1,26 @@
 const db = require("../models");
+const mongoose = require("mongoose");
+
 
 const index = (req, res) => {
-    db.Post.find({}, (err, foundPosts) => {
-        if (err) return console.log("Error in Posts", err);
+    db.Post.find() .populate("user")
+        .exec((err, populatePosts) => {
+            console.log(err);
+            console.log(populatePosts);
+            console.log("req.user", req.user)
+       
+            //  ({}, (err, foundPosts) => {
+            //         if (err) return console.log("Error in Posts", err);
 
-        return res.status(200).json({
-            message: "Success",
-            data: foundPosts,
+
+
+
+            return res.status(200).json({
+                message: "Success",
+                data: populatePosts,
+                //   foundPosts
+            });
         });
-    });
 };
 const show = (req, res) => {
     db.Post.findById(req.params.id, (err, foundPost) => {
@@ -23,21 +35,22 @@ const show = (req, res) => {
 
 const showComments = (req, res) => {
     db.Post.findById(req.params.id)
-    .then(foundPost => {
-        if (!foundPost) return console.log("Error in Comment#show")
+        .then(foundPost => {
+            if (!foundPost) return console.log("Error in Comment#show")
 
-        return res.status(200).json({
-            message: "Success",
-            data: foundPost.comments,
-        });
-    })
-    .catch(err => console.log(err))
+            return res.status(200).json({
+                message: "Success",
+                data: foundPost.comments,
+            });
+        })
+        .catch(err => console.log(err))
 };
 
 const create = (req, res) => {
     db.Post.create(req.body, (err, savedPost) => {
-        if (err) return console.log("Error in Posts#create:", err);
 
+        if (err) return console.log("Error in Posts#create:", err);
+        console.log("create", req.body.user)
         return res.status(201).json({
             message: "Success",
             data: savedPost,
@@ -49,7 +62,7 @@ const createComment = (req, res) => {
     db.Post.findById(req.params.id)
         .then(foundPost => {
             if (!foundPost) return console.log("Error in Comment")
-            
+
             foundPost.comments.push(req.body);
             foundPost.save();
 

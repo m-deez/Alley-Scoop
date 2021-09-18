@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+// import { connect } from "react-redux";
 import "./styles.css";
 import Comment from "../Comment";
 import CommentForm from "../CommentForm";
 import { func, string, array } from "prop-types";
 import * as PostService from "../../api/PostService";
+import { render } from "@testing-library/react";
 
-function Post({ id, getPostsAgain, article, post, player }) {
+       
+
+function Post( { user, id, getPostsAgain, article, post, player,
+  }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedArticle, setArticle] = useState(article);
+    // const [editedUser, setUser] = useState(user.name);
     const [editedPost, setPost] = useState(post);
     const [editedPlayer, setPlayer] = useState(player);
     const [comments, setComments] = useState([]);
 
     const handleEdit = async () => {
-        console.log("handleedit");
+        // console.log("handleedit");
         setIsEditing(!isEditing);
         //meaning submit is showing
         if (isEditing) {
             let editedPost = {
                 article: editedArticle,
+                // user: editedUser,
                 post: editedPost,
                 player: editedPlayer,
             };
@@ -26,6 +34,8 @@ function Post({ id, getPostsAgain, article, post, player }) {
             getPostsAgain();
         }
     };
+ 
+
 
     const handleDelete = async () => {
         await PostService.remove(id);
@@ -41,10 +51,18 @@ function Post({ id, getPostsAgain, article, post, player }) {
     useEffect(() => {
         fetchComments(id);
     }, []);
-
-
-    return (
+    
+    // const user = props.user
+    // console.log(user);
+  
+    
+      return (
         <div className="posts">
+            <div>
+                <p><b>Post,</b> {user.name}</p>
+              
+            </div>
+          
             <div className="top-posts">
                 {!isEditing && <h1>{article}</h1>}
                 {isEditing && (
@@ -109,11 +127,13 @@ function Post({ id, getPostsAgain, article, post, player }) {
                 getPostsAgain={() => getPostsAgain()}
                 getCommentsAgain={(id) => fetchComments(id)}
             />
-            </div>
+            </div> 
+           
 
 
         </div>
-    );
+        );
+   
 }
 Post.propTypes = {
     id: string.isRequired,
@@ -122,6 +142,7 @@ Post.propTypes = {
     player: string.isRequired,
     postComments: array,
     getPostsAgain: func,
+    auth: PropTypes.object.isRequired
 };
 
 export default Post;
