@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import jordan from "./images/jordan.jpeg";
 class Landing extends Component {
   render() {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
-            {/* <img src="./jordan.jpeg"></img> */}
+        <div>
+        <img className="login-photo" src={jordan} alt={"jordan"} height={400} width={600}/>
+        </div>
           <div className="col s12 center-align">
             <p className="flow-text grey-text text-darken-1">
               Get the latest <i>Scoop</i> in basketball news
