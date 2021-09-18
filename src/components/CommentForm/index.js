@@ -28,7 +28,7 @@ const CommentForm = ({ id, getCommentsAgain, getPostsAgain }) => {
                 value={user}
                 type="text"
                 name="user"
-                placeholder="User"
+                placeholder="SIGNATURE"
             />
             <input
                 onChange={(e) => setBody(e.target.value)}
