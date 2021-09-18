@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { func } from "prop-types";
+import propTypes from "prop-types";
+import { func,  } from "prop-types";
 import * as PostService from "../../api/PostService";
 
-const PostForm = ({getPostsAgain}) => {
-    const [article, setArticle] = useState("");
+const PostForm = ({getPostsAgain, user}) => {
+    const [article, setAriticle] = useState("");
     const [post, setPost] = useState("");
     const [player, setPlayer] = useState("");
+    // const [user, setUser] = useState({});
     
-    const handleSubmit = async () => {
-        let newPost = { article, post, player };
+    const handleSubmit = async (props) => {
+        let newPost = { article, post, player, user: user._id };
         const res = await PostService.create(newPost);
 
         if(res.status === 201) {
             setArticle("");
             setPost("");
             setPlayer("");
+            // setUser({user})
             getPostsAgain();
 
         } else {
             alert("Server Error");
         }
     };
-
+    
+  
     return (
         <div className="posts-input">
             <input
@@ -52,6 +56,7 @@ const PostForm = ({getPostsAgain}) => {
 };
 PostForm.propTypes = {
     getPostsAgain: func,
+    // auth: PropTypes.object.isRequired,
 };
 
 export default PostForm;
