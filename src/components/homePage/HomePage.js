@@ -16,6 +16,7 @@ class HomePage extends Component {
     };
     render() {
         const { user } = this.props.auth;
+        console.log ("props dot auth", user)
         return (
             <div className="homepage">
                 <div >
@@ -35,7 +36,7 @@ class HomePage extends Component {
                     </NewsContextProvider>
                     </div>
                     <div>
-                        <Forum />
+                        <Forum user={ user} />
                     </div>
                 
             </div>
