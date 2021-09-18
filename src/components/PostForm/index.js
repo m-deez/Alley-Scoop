@@ -4,8 +4,6 @@ import propTypes from "prop-types";
 import { func,  } from "prop-types";
 import * as PostService from "../../api/PostService";
 
-
-
 const PostForm = ({getPostsAgain, user}) => {
     const [article, setAriticle] = useState("");
     const [post, setPost] = useState("");
@@ -17,7 +15,7 @@ const PostForm = ({getPostsAgain, user}) => {
         const res = await PostService.create(newPost);
 
         if(res.status === 201) {
-            setAriticle("");
+            setArticle("");
             setPost("");
             setPlayer("");
             // setUser({user})
@@ -32,7 +30,7 @@ const PostForm = ({getPostsAgain, user}) => {
     return (
         <div className="posts-input">
             <input
-                onChange={(e) => setAriticle(e.target.value)}
+                onChange={(e) => setArticle(e.target.value)}
                 value={article}
                 type="text"
                 name="article"

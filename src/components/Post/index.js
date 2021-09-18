@@ -46,6 +46,7 @@ function Post({ user, id, getPostsAgain, article, post, player }) {
             setComments(res.data.data);
         }
     }
+
     useEffect(() => {
         fetchComments(id);
     }, []);
