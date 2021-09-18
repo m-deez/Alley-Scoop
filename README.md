@@ -17,6 +17,9 @@ Enjoy!
 
 ![ux2](./public/survey2.png)
 
+![userflow](./public/Project 3 user flow.png)
+
+
 
 Technologies Used:
 
