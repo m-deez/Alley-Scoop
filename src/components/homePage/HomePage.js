@@ -29,7 +29,7 @@ class HomePage extends Component {
                          <button onClick={this.onLogoutClick}>Logout</button>
                     </div>
                 </div>
-             
+             <div classname="dualPage">
                     <div className="news">News Feed Below!
                     <NewsContextProvider>
                     <News />
@@ -38,7 +38,7 @@ class HomePage extends Component {
                     <div>
                         <Forum user={ user} />
                     </div>
-                
+             </div>   
             </div>
 
         );
