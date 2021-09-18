@@ -8,6 +8,11 @@ App creates a community of people to view and comment on their favorite Sports n
 
 ![wireframe](./public/wire.jpeg)
 
+![ux1](./public/wire.png)
+
+![ux2](./public/wire.png)
+
+
 
 
 Technologies Used:
